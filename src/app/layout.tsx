@@ -1,8 +1,6 @@
+import Link from "next/link";
 import "./globals.css";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Web tutorials",
@@ -18,23 +16,33 @@ export default function RootLayout({
     <html>
       <body>
         <h1>
-          <a href="/">WEB</a>
+          <Link href="/" prefetch={true}>
+            WEB
+          </Link>
         </h1>
         <ol>
           <li>
-            <a href="/read/1">html</a>
+            <Link href="/read/1" prefetch={false}>
+              html
+            </Link>
           </li>
           <li>
-            <a href="/read/2">css</a>
+            <Link href="/read/2" prefetch={false}>
+              css
+            </Link>
           </li>
         </ol>
         {children}
         <ul>
           <li>
-            <a href="/create">Create</a>
+            <Link href="/create" prefetch={false}>
+              Create
+            </Link>
           </li>
           <li>
-            <a href="/update/1">Update</a>
+            <Link href="/update/1" prefetch={false}>
+              Update
+            </Link>
           </li>
           <li>
             <input type="button" value="delete" />

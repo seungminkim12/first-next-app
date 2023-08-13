@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "env-cmd -f .env.production next start -p 6600",
+    "start2": "next start",
+    "start:dev": "env-cmd -f .env.development next start -p 6600",
     "lint": "next lint"
   },
   "dependencies": {
@@ -13,6 +15,7 @@
     "@types/react": "18.2.20",
     "@types/react-dom": "18.2.7",
     "autoprefixer": "10.4.14",
+    "env-cmd": "^10.1.0",
     "eslint": "8.47.0",
     "eslint-config-next": "13.4.13",
     "next": "13.4.13",
