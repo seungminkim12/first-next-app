@@ -30,6 +30,7 @@ export default function Create() {
           .then((result) => {
             console.log("result", result);
             const lastId = result.id;
+            router.refresh();
             router.push(`/read/${lastId}`);
           });
       }}

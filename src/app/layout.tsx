@@ -1,9 +1,8 @@
-// "use client";
 import Link from "next/link";
 import "./globals.css";
 import type { Metadata } from "next";
 import { Topic } from "./model/model";
-import { useState, useEffect } from "react";
+import Control from "./Control";
 
 export const metadata: Metadata = {
   title: "Web tutorials",
@@ -15,7 +14,10 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const res = await fetch("http://localhost:9999/topics");
+  const res = await fetch("http://localhost:9999/topics", {
+    next: { revalidate: 0 },
+  });
+  // ,{cache:'no-store'},);
   const topics = await res.json();
 
   /*
@@ -47,21 +49,7 @@ export default async function RootLayout({
           })}
         </ol>
         {children}
-        <ul>
-          <li>
-            <Link href="/create" prefetch={false}>
-              Create
-            </Link>
-          </li>
-          <li>
-            <Link href="/update/1" prefetch={false}>
-              Update
-            </Link>
-          </li>
-          <li>
-            <input type="button" value="delete" />
-          </li>
-        </ul>
+        <Control />
       </body>
     </html>
   );
