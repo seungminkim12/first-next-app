@@ -5,7 +5,9 @@ type OwnProps = {
 };
 
 export default async function Read(props: OwnProps) {
-  const res = await fetch(`http://localhost:9999/topics/${props.params.id}`);
+  const res = await fetch(`http://localhost:9999/topics/${props.params.id}`, {
+    cache: "no-cache",
+  });
   const topic = await res.json();
   return (
     <>

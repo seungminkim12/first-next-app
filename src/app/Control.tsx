@@ -15,7 +15,7 @@ export default function Control() {
       {id ? (
         <>
           <li>
-            <Link href="/update/1" prefetch={false}>
+            <Link href={`/update/${id}`} prefetch={false}>
               Update
             </Link>
           </li>
